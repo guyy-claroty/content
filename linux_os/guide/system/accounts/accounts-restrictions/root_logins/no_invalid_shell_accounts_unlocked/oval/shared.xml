@@ -2,11 +2,11 @@
   <definition class="compliance" id="{{{ rule_id }}}" version="1">
     {{{ oval_metadata("Ensure Accounts Without Valid Login Shell Are Locked", rule_title=rule_title) }}}
     <criteria>
-      <criterion comment="Check that the accounts do not have valid shells" test_ref="test_{{{ rule_id }}}_no_invalid_shell_accounts" negate="true" />
+      <criterion comment="Check that the accounts do not have valid shells" test_ref="test_{{{ rule_id }}}_no_invalid_shell_accounts" />
     </criteria>
   </definition>
 
-  <ind:textfilecontent54_test id="test_{{{ rule_id }}}_no_invalid_shell_accounts" check="all" check_existence="at_least_one_exists"
+  <ind:textfilecontent54_test id="test_{{{ rule_id }}}_no_invalid_shell_accounts" check="none satisfy" check_existence="any_exist"
     version="1" comment="Verify there is no account with invalid shell which is not locked exists">
     <ind:object object_ref="obj_{{{ rule_id }}}_shells" />
     <ind:state state_ref="state_{{{ rule_id }}}_valid_shells" />
